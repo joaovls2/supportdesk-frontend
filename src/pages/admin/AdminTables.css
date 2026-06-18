@@ -1,0 +1,68 @@
+.admin-section {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inline-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.inline-form input {
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.admin-table th {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.danger-button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #fee2e2;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .inline-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-section {
+    overflow-x: auto;
+  }
+}
+
+.inline-form select {
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  background: var(--surface);
+}
+
+.chamados-form {
+  grid-template-columns: repeat(3, 1fr);
+}
