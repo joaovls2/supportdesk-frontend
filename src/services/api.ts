@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://supportdesk-api-14g8.onrender.com",
+  baseURL: "https://supportdesk-api-l4g8.onrender.com",
 });
 
 api.interceptors.request.use((config) => {
