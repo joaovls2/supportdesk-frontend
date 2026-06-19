@@ -20,6 +20,18 @@
   --danger: #dc2626;
 }
 
+:root.dark {
+  --bg: #0f172a;
+  --surface: #111827;
+  --border: #334155;
+
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+}
+
 body {
   font-family: Inter, Arial, sans-serif;
   background: var(--bg);
@@ -31,6 +43,14 @@ input,
 textarea,
 select {
   font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
 }
 
 button {
@@ -59,4 +79,76 @@ button {
   color: var(--text);
   font-weight: 700;
   text-decoration: none;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  min-height: 150px;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.dashboard-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-card span {
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.dashboard-card strong {
+  font-size: 2rem;
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+}
+
+.theme-toggle span {
+  display: none;
+}
+
+.topbar {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  margin-bottom: 1.5rem;
 }

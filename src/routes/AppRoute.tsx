@@ -101,6 +101,15 @@ export function AppRoutes() {
         />
 
         <Route
+          path="/usuario/chamados/novo"
+          element={
+            <ProtectedRoute allowedRoles={["USUARIO"]}>
+              <UsuarioChamadosPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/usuario/chamados/:id"
           element={
             <ProtectedRoute allowedRoles={["USUARIO"]}>

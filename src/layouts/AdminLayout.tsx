@@ -8,6 +8,8 @@ import {
   Wrench,
 } from "lucide-react";
 
+import { ThemeToggle } from "../components/theme/themeToggle";
+
 import "./AdminLayout.css";
 
 interface AdminLayoutProps {
@@ -58,7 +60,13 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         </button>
       </aside>
 
-      <main className="admin-content">{children}</main>
+      <main className="admin-content">
+        <div className="topbar">
+          <ThemeToggle />
+        </div>
+
+        {children}
+      </main>
     </div>
   );
 }
