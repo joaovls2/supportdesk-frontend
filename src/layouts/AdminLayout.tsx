@@ -8,7 +8,7 @@ import {
   Wrench,
 } from "lucide-react";
 
-import { ThemeToggle } from "../components/theme/themeToggle";
+import { ThemeToggle } from "../components/theme/ThemeToggle";
 
 import "./AdminLayout.css";
 

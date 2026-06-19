@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Headphones, Home, LogOut } from "lucide-react";
 
-import { ThemeToggle } from "../components/theme/themeToggle";
+import { ThemeToggle } from "../components/theme/ThemeToggle";
 
 import "./AdminLayout.css";
 
