@@ -12,7 +12,7 @@ import { listarTecnicos } from "../../services/tecnicoService";
 import {
   enviarAnexos,
   listarAnexos,
-  obterUrlDownloadAnexo,
+  abrirPreviewAnexo,
 } from "../../services/anexoService";
 
 import type { ChamadoResponse, StatusChamado } from "../../types/chamado";
@@ -123,13 +123,23 @@ export function AdminChamadoDetalhesPage() {
           <h2>Informações</h2>
 
           <div className="info-list">
-            <p><strong>Status:</strong> {chamado.status}</p>
-            <p><strong>Prioridade:</strong> {chamado.prioridade}</p>
-            <p><strong>Categoria:</strong> {chamado.categoria}</p>
-            <p><strong>Solicitante:</strong> Usuário #{chamado.usuarioId}</p>
+            <p>
+              <strong>Status:</strong> {chamado.status}
+            </p>
+            <p>
+              <strong>Prioridade:</strong> {chamado.prioridade}
+            </p>
+            <p>
+              <strong>Categoria:</strong> {chamado.categoria}
+            </p>
+            <p>
+              <strong>Solicitante:</strong> Usuário #{chamado.usuarioId}
+            </p>
             <p>
               <strong>Técnico:</strong>{" "}
-              {chamado.tecnicoId ? `Técnico #${chamado.tecnicoId}` : "Não atribuído"}
+              {chamado.tecnicoId
+                ? `Técnico #${chamado.tecnicoId}`
+                : "Não atribuído"}
             </p>
             <p>
               <strong>Criado em:</strong>{" "}
@@ -221,15 +231,15 @@ export function AdminChamadoDetalhesPage() {
         ) : (
           <div className="attachments-grid">
             {anexos.map((anexo) => (
-              <a
+              <button
                 key={anexo.id}
-                href={obterUrlDownloadAnexo(anexo.id)}
-                target="_blank"
+                type="button"
+                onClick={() => abrirPreviewAnexo(anexo.id)}
                 className="attachment-item"
               >
                 <span>{anexo.nomeArquivo}</span>
                 <small>{Math.round(anexo.tamanhoArquivo / 1024)} KB</small>
-              </a>
+              </button>
             ))}
           </div>
         )}
@@ -246,7 +256,9 @@ export function AdminChamadoDetalhesPage() {
               <div>
                 <strong>{item.status}</strong>
                 <p>{item.comentario}</p>
-                <small>{new Date(item.dataAlteracao).toLocaleString("pt-BR")}</small>
+                <small>
+                  {new Date(item.dataAlteracao).toLocaleString("pt-BR")}
+                </small>
               </div>
             </div>
           ))}

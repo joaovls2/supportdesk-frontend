@@ -9,7 +9,7 @@ import {
 import {
   enviarAnexos,
   listarAnexos,
-  obterUrlDownloadAnexo,
+  abrirPreviewAnexo,
 } from "../../services/anexoService";
 import type { ChamadoResponse } from "../../types/chamado";
 import type { HistoricoChamadoResponse } from "../../types/historico";
@@ -121,15 +121,15 @@ export function UsuarioChamadoDetalhesPage() {
         ) : (
           <div className="attachments-grid">
             {anexos.map((anexo) => (
-              <a
+              <button
                 key={anexo.id}
-                href={obterUrlDownloadAnexo(anexo.id)}
-                target="_blank"
+                type="button"
+                onClick={() => abrirPreviewAnexo(anexo.id)}
                 className="attachment-item"
               >
                 <span>{anexo.nomeArquivo}</span>
                 <small>{Math.round(anexo.tamanhoArquivo / 1024)} KB</small>
-              </a>
+              </button>
             ))}
           </div>
         )}

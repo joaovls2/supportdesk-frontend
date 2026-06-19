@@ -1,18 +1,7 @@
 import { api } from "./api";
 import type { AnexoResponse } from "../types/anexo";
 
-export async function listarAnexos(chamadoId: number) {
-  const response = await api.get<AnexoResponse[]>(
-    `/chamados/${chamadoId}/anexos`
-  );
-
-  return response.data;
-}
-
-export async function enviarAnexos(
-  chamadoId: number,
-  arquivos: FileList
-) {
+export async function enviarAnexos(chamadoId: number, arquivos: FileList) {
   const formData = new FormData();
 
   Array.from(arquivos).forEach((arquivo) => {
@@ -32,6 +21,19 @@ export async function enviarAnexos(
   return response.data;
 }
 
-export function obterUrlDownloadAnexo(anexoId: number) {
-  return `http://localhost:8080/chamados/anexos/${anexoId}/download`;
+export async function listarAnexos(chamadoId: number) {
+  const response = await api.get<AnexoResponse[]>(
+    `/chamados/${chamadoId}/anexos`
+  );
+
+  return response.data;
+}
+
+export async function abrirPreviewAnexo(anexoId: number) {
+  const response = await api.get(`/anexos/${anexoId}/download`, {
+    responseType: "blob",
+  });
+
+  const url = window.URL.createObjectURL(response.data);
+  window.open(url, "_blank");
 }
